@@ -8,76 +8,34 @@
     <title>Document</title>
     <script scr="/funciones.js"></script>
     <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
     <div class="card-body p-4" style="margin: 4%;">
 
-        <h1 class="text-center my-3 pb-3" style="text-align: center;">To Do List</h1>
+        <h1 class="text-center my-3 pb-3" style="text-align: center;">Lista de tareas</h1>
 
         <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
             <div class="col-12">
                 <div class="form-outline">
                     <label class="form-label" style="padding: 1rem;">AGREGAR TAREA:</label>
-                    <input type="text" id="form1" placeholder="Escribe una nueva tarea " id="item"  class="form-control"/>
+                    <input type="text" id="MainInput" placeholder="Escribe una nueva tarea " class="form-control" />
                 </div>
             </div>
 
             <div class="col-12">
-                <br><button type="button" class="btn btn-info">Agregar</button> 
+                <br><button type="button" id="mainbutton" class="btn btn-info">Agregar</button>
             </div>
         </form>
 
-        <table class="table mb-4">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Tarea</th>
-                    <th scope="col">Estatus</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Comprar pan</td>
-                    <td>In progress</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <button type="submit" class="btn btn-success ms-1">Finished</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Ir a buscar a Juanito a la escuela</td>
-                    <td>In progress</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <button type="submit" class="btn btn-success ms-1">Finished</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Hacer tarea</td>
-                    <td>In progress</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <button type="submit" class="btn btn-success ms-1">Finished</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td id="tarea">Hacer tarea</td>
-                    <td>In progress</td>
-                    <td>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <button type="submit" class="btn btn-success ms-1">Finished</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="MainUl">
+        </div>
+
+
+        <script src="funciones.js"></script>
 
     </div>
 

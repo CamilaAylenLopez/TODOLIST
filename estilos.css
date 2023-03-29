@@ -10,10 +10,24 @@
     margin: 4%;
 }
 
+
+
 .divider:after,
 .divider:before {
   content: "";
   flex: 1;
   height: 1px;
   background: #eee;
+}
+
+
+.corrected {
+  margin: 15px;
+}
+
+.donete {
+  background-size: auto;
+  background-repeat: no-repeat;
+  width: max-content;
+  text-decoration: line-through;
 }
