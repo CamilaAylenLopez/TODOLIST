@@ -12,21 +12,16 @@ class Tarea{
 }
 
 var item;
-var lista = []
+let lista = []
 const btnEnviar = document.querySelector("#mainbutton")
 
 //element.setAttribute(atributo, valor)
-const AñadirItem = (items) =>{
-    var items = document.getElementById(item)
+const AñadirItem = () =>{
+    let items = document.getElementById("Titulo")
     lista.push(items)
+    console.log(lista[0])
     for (var i = 0; i < lista.length; i++) {
-        document.getElementById("tarea").innerHTML = lista;
-        document.createElement("tarea");
+        document.getElementById("tareas").innerHTML = lista[i];
+        //document.createElement("tarea");
     }
-}
-
-
-
-const añadirItem = () => {
-    lista.push(items)
 }

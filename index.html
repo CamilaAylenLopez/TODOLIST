@@ -31,18 +31,18 @@
                 <div style="padding-top: 3rem;">
                     <div class="form-outline">
                         <label class="form-label">Título de la tarea:</label>
-                        <input type="text" id="Titulo" placeholder="Escribe el nombre de la tarea" class="form-control" />
+                        <input type="text"  placeholder="Escribe el nombre de la tarea" class="form-control" id="Titulo"/>
                         <label class="form-label" style="padding-top: 1rem;">Descripción:</label>
                         <input type="text" id="Descripcion" placeholder="Escribe una descripción para la tarea" class="form-control" />
                     </div>
                 </div>
 
                 <div>
-                    <br><button type="button" id="mainbutton" class="btn btn-info" onclick="AñadirItem(this)">Agregar</button>
+                    <br><button type="button" id="item" class="btn btn-info" onclick="AñadirItem()">Agregar</button>
                 </div>
             </form>
 
-            <div id="MainUl">
+            <div id="tareas">
             </div>
             <div>
                 <br><button type="button" id="tareamasrapida" class="btn btn-info">Tarea que se realizo más rápido</button>
