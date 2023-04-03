@@ -53,6 +53,13 @@ body{
   margin: 1rem;
 }
 
+.cuadrodetareas{
+  word-wrap: break-word;
+  border-style:double;
+  background-color: rgba(255, 255, 255, 0.404);
+  margin: 1rem;
+}
+
 .divider:after,
 .divider:before {
   content: "";

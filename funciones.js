@@ -13,85 +13,62 @@ class Tarea {
 
 var item;
 const tareas = []
-const listados = []
-const btnEnviar = document.querySelector("#mainbutton")
 
-//element.setAttribute(atributo, valor)
 const AñadirItem = () => {
-    /*let items = document.getElementById("Titulo")
-    let descrip = document.getElementById("Descripcion")
-    lista.push(items.value)
-    listados.push(descrip.value)*/
-
     var tareaInput = document.getElementById("titulo").value;
     var descripcionInput = document.getElementById("Descripcion").value;
     if (tareaInput && descripcionInput) {
-        tareas.push({ tarea: tareaInput, descripcion: descripcionInput, tiempo: Date.now() });
+        tareas.push({ tarea: tareaInput, descripcion: descripcionInput, tiempodecreacion: Date.now(), tiempodefinalizacion: undefined });
         MostrarItem();
         document.getElementById("titulo").value = "";
         document.getElementById("Descripcion").value = "";
     }
-
 }
 
 
 const MostrarItem = () => {
-    /*for (var i = 0; i < lista.length; i++) {
-        document.getElementById("tareas").innerHTML = lista[i];
-        document.getElementById("descripciones").innerHTML = listados[i];
-        //document.createElement("tarea");
-    }
-    //document.getElementById("tareas").innerHTML = lista;
-    var newDiv = document.createElement("ul");
-    var newContent = document.textContent(lista);
-    newDiv.appendChild(newContent);
-    var currentDiv = document.getElementById("tareas");
-    document.body.insertBefore(newDiv, currentDiv);
-
-    console.log(lista)*/
     var lista = document.getElementById("lista-tareas");
     lista.innerHTML = "";
     for (var i = 0; i < tareas.length; i++) {
-        var tarea = tareas[i].tarea;
-        var descripcion = tareas[i].descripcion;
+        /*var tarea = tareas[i].tarea;
+        var descripcion = tareas[i].descripcion;*/
+        
         var li = document.createElement("li");
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.onclick = function () { marcarHecha(this); };
         li.appendChild(checkbox);
         var labelito = document.createElement("label");
-        labelito.innerHTML = tarea + ": " + descripcion
+        labelito.innerHTML = tareas[i].tarea + ": " + tareas[i].descripcion
         li.appendChild(labelito)
         lista.appendChild(li);
     }
-
-    console.log(tareas)
 }
 
 function marcarHecha(checkbox) {
     var tarea = checkbox.nextSibling;
-    console.log(tarea)
-
+    tareas.tiempodefinalizacion = Date.now() //de alguna forma tiene que saber en que lugar esta la tarea para poder completar el campo de tiempodefinalizacion
     if (checkbox.checked) {
         tarea.style.textDecoration = "line-through";
     } else {
         tarea.style.textDecoration = "none";
     }
-    
 }
 
 function tareaMasRapida() {
-    var tareaMasRapida = null;
+    var tareaMasRapida = 0;
     for (var i = 0; i < tareas.length; i++) {
-        var tarea = tareas[i];
-        if (!tareaMasRapida || tarea.tiempo < tareaMasRapida.tiempo) {
-            tareaMasRapida = tarea;
+        //el tiempodefinalizacion no esta definido
+        var tiempoquesetardoenrealizarlatarea = tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion
+        if (tiempoquesetardoenrealizarlatarea < tareaMasRapida) {
+            tareaMasRapida = tareas[i].Titulo;
         }
     }
-    if (tareaMasRapida) {
-        alert("La tarea más rápida fue: " + tareaMasRapida.tarea);
+    if (tareaMasRapida != 0) {
+        alert("La tarea más rápida fue: " + tareaMasRapida);
     } else {
         alert("No hay tareas realizadas");
     }
-    console.log(tareas.tiempo)
+    console.log(tareas.tiempodecreacion)
+    //console.log(tareas.tiempo)
 }
