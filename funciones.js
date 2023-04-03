@@ -1,4 +1,4 @@
-class Tarea {
+/*class Tarea {
     constructor(Titulo, Descripcion, Hora) {
         this.Titulo = Titulo
         this.Descripcion = Descripcion
@@ -9,10 +9,10 @@ class Tarea {
         this.Realizado = new Date()
         this.Tardanza = this.Realizado - this.Hora
     }
-}
+}*/
 
 var item;
-const tareas = []
+const tareas = [];
 
 const AñadirItem = () => {
     var tareaInput = document.getElementById("titulo").value;
@@ -37,7 +37,7 @@ const MostrarItem = () => {
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.onclick = function () { marcarHecha(this); };
-        li.appendChild(checkbox);
+        li.appendChild(checkbox, i);
         var labelito = document.createElement("label");
         labelito.innerHTML = tareas[i].tarea + ": " + tareas[i].descripcion
         li.appendChild(labelito)
@@ -45,9 +45,10 @@ const MostrarItem = () => {
     }
 }
 
-function marcarHecha(checkbox) {
+function marcarHecha(checkbox, id) {
     var tarea = checkbox.nextSibling;
-    tareas.tiempodefinalizacion = Date.now() //de alguna forma tiene que saber en que lugar esta la tarea para poder completar el campo de tiempodefinalizacion
+    tareas.indexOf(id)
+    tareas[id].tiempodefinalizacion = Date.now(); //de alguna forma tiene que saber en que lugar esta la tarea para poder completar el campo de tiempodefinalizacion
     if (checkbox.checked) {
         tarea.style.textDecoration = "line-through";
     } else {
