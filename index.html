@@ -22,7 +22,8 @@
             <form class="row-cols-lg-auto g-3 mb-4 pb-2">
                 <div class="cuadro">
                     <div style="margin: 1rem;">
-                        <p style="text-align: center;">Hola! Estamos aquí para ayudarte con tus tareas; con esta pagina lograras:</p>
+                        <p style="text-align: center;">Hola! Estamos aquí para ayudarte con tus tareas; con esta pagina
+                            lograras:</p>
                         <li>Anotar tus tareas</li>
                         <li>Marcar cuales ya has hecho</li>
                         <li>Ver cual fue la que más rápido realizaste</li>
@@ -31,9 +32,10 @@
                 <div style="padding-top: 3rem;">
                     <div class="form-outline">
                         <label class="form-label">Título de la tarea:</label>
-                        <input type="text"  placeholder="Escribe el nombre de la tarea" class="form-control" id="Titulo"/>
+                        <input type="text" placeholder="Escribe el nombre de la tarea" class="form-control" id="titulo" />
                         <label class="form-label" style="padding-top: 1rem;">Descripción:</label>
-                        <input type="text" id="Descripcion" placeholder="Escribe una descripción para la tarea" class="form-control" />
+                        <input type="text" id="Descripcion" placeholder="Escribe una descripción para la tarea"
+                            class="form-control" />
                     </div>
                 </div>
 
@@ -42,10 +44,10 @@
                 </div>
             </form>
 
-            <div id="tareas">
-            </div>
+            <ul id="lista-tareas"></ul>
+
             <div>
-                <br><button type="button" id="tareamasrapida" class="btn btn-info">Tarea que se realizo más rápido</button>
+                <br><button type="button" id="tareamasrapida" class="btn btn-info"onclick="tareaMasRapida()">Tarea que se realizo más rápido</button>
             </div>
         </div>
 

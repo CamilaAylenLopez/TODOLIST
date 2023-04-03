@@ -4,9 +4,11 @@ body{
     background-blend-mode: darken;
     background-repeat: no-repeat;
     background-size: cover;
-
+   
     font-family: confor;
 }
+
+
 
 @font-face{
   font-family:School_year;
