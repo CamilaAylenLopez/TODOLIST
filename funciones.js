@@ -1,44 +1,39 @@
-/*class Tarea {
-    constructor(Titulo, Descripcion, Hora) {
-        this.Titulo = Titulo
-        this.Descripcion = Descripcion
-        this.Hora = Hora
-        this.Realizado = undefined
-    }
-    Hora() {
-        this.Realizado = new Date()
-        this.Tardanza = this.Realizado - this.Hora
-    }
-}*/
 
 var item;
-var tareas = [];
+const tareas = [];
+var idTareas = 0
 
 const AñadirItem = () => {
     var tareaInput = document.getElementById("titulo").value;
     var descripcionInput = document.getElementById("Descripcion").value;
     if (tareaInput && descripcionInput) {
-        tareas.push({id: tareas.length + 1, tarea: tareaInput, descripcion: descripcionInput, tiempodecreacion: Date.now(), estado: 0, tiempodefinalizacion: undefined, tiempoquesetardo: undefined });
-        MostrarItem();
+        let date = new Date()
+        tareas.push({
+            id: idTareas, 
+            tarea: tareaInput, 
+            descripcion: descripcionInput, 
+            tiempodecreacion: date.getTime(), 
+            tiempodefinalizacion: -1, 
+            estado: 0, 
+            tiempoquesetardo: undefined });
+        idTareas++
         document.getElementById("titulo").value = "";
         document.getElementById("Descripcion").value = "";
-    }
+        MostrarItem();
+    } else console.log("falta nombre o desc ")
 }
 
 
 const MostrarItem = () => {
     var lista = document.getElementById("lista-tareas");
-    var a
     lista.innerHTML = "";
-    for (var i = 0; i < tareas.length; i++) {
-        /*var tarea = tareas[i].tarea;
-        var descripcion = tareas[i].descripcion;*/
-
+    for (let i = 0; i < tareas.length; i++) {
         var li = document.createElement("li");
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        a = i
-        checkbox.onclick = function () { marcarHecha(this, a); };//esto esta mal
+        //checkbox.onclick = function () { marcarHecha(this, i); };//esto esta mal
+        checkbox.setAttribute("onclick", `marcarHecha2(${i})`)
+        checkbox.setAttribute("id", `check-${i}`)
         li.appendChild(checkbox);
         
         var labelito = document.createElement("label");
@@ -47,12 +42,16 @@ const MostrarItem = () => {
         lista.appendChild(li);
     }
 }
+function marcarHecha2(id){
+    let check = document.getElementById(`check-${id}`)
+    marcarHecha(check, id)
+}
 
 function marcarHecha(checkbox, id) {
     var tarea = checkbox.nextSibling;
     tareas.indexOf(id)
-    tareas[id].tiempodefinalizacion = Date.now();
-    
+    let date = new Date()
+    tareas[id].tiempodefinalizacion = date.getTime();
     if (checkbox.checked) {
         tareas[id].estado = 1
         tarea.style.textDecoration = "line-through";
@@ -65,28 +64,17 @@ function marcarHecha(checkbox, id) {
 }
 
 function tareaMasRapida() {
-    var tareaMasRapida;
-    var mejortiempo = null;
-    var desp;
-    for (var i = 0; i < tareas.length; i++) {
-        if (tareas[i].estado == 1) {
-            tareas[i].tiempoquesetardo = tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion
-            console.log(tareas[i].tiempoquesetardo)
-            if (tareas[i].tiempoquesetardo > mejortiempo) {
-                tareaMasRapida = tareas[i].tarea;
-                mejortiempo = tareas[i].tiempoquesetardo
-                desp = tareas[i].descripcion
+    let idMasRapida = -1
+    let tareaMasRapida = -1
+    for (let i = 0; i < tareas.length; i++) {
+        if(tareas[i].tiempodefinalizacion != -1) {
+            if (tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion > tareaMasRapida){
+                tareaMasRapida = tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion
+                idMasRapida = tareas[i].id
             }
         }
-
     }
-    if (mejortiempo != null) {
-        alert("La tarea más rápida fue: " + tareaMasRapida + " Descripción " + desp +
-        " Se tardo:" + mejortiempo);
-    } else {
-        alert("No hay tareas realizadas");
-    }
-    console.log(tareas[2].tiempoquesetardo)
-    console.log(tareas[1].tiempoquesetardo)
+    if (idMasRapida == -1) console.log("ninguna tarea fue completada")
+    else console.log("la tarea mas rapida fue: " + tareas[idMasRapida].tarea)
 
 }
