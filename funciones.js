@@ -18,7 +18,7 @@ const AñadirItem = () => {
     var tareaInput = document.getElementById("titulo").value;
     var descripcionInput = document.getElementById("Descripcion").value;
     if (tareaInput && descripcionInput) {
-        tareas.push({ tarea: tareaInput, descripcion: descripcionInput, tiempodecreacion: Date.now(), estado: 0, tiempodefinalizacion: undefined, tiempoquesetardo: undefined });
+        tareas.push({id: tareas.length + 1, tarea: tareaInput, descripcion: descripcionInput, tiempodecreacion: Date.now(), estado: 0, tiempodefinalizacion: undefined, tiempoquesetardo: undefined });
         MostrarItem();
         document.getElementById("titulo").value = "";
         document.getElementById("Descripcion").value = "";
@@ -71,6 +71,7 @@ function tareaMasRapida() {
     for (var i = 0; i < tareas.length; i++) {
         if (tareas[i].estado == 1) {
             tareas[i].tiempoquesetardo = tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion
+            console.log(tareas[i].tiempoquesetardo)
             if (tareas[i].tiempoquesetardo > mejortiempo) {
                 tareaMasRapida = tareas[i].tarea;
                 mejortiempo = tareas[i].tiempoquesetardo
@@ -85,4 +86,7 @@ function tareaMasRapida() {
     } else {
         alert("No hay tareas realizadas");
     }
+    console.log(tareas[2].tiempoquesetardo)
+    console.log(tareas[1].tiempoquesetardo)
+
 }
