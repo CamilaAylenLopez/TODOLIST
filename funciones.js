@@ -28,6 +28,7 @@ const AñadirItem = () => {
 
 const MostrarItem = () => {
     var lista = document.getElementById("lista-tareas");
+    var a
     lista.innerHTML = "";
     for (var i = 0; i < tareas.length; i++) {
         /*var tarea = tareas[i].tarea;
@@ -36,7 +37,8 @@ const MostrarItem = () => {
         var li = document.createElement("li");
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.onclick = function () { marcarHecha(this, i); };//esto esta mal
+        a = i
+        checkbox.onclick = function () { marcarHecha(this, a); };//esto esta mal
         li.appendChild(checkbox);
         
         var labelito = document.createElement("label");
@@ -65,22 +67,22 @@ function marcarHecha(checkbox, id) {
 function tareaMasRapida() {
     var tareaMasRapida;
     var mejortiempo = null;
+    var desp;
     for (var i = 0; i < tareas.length; i++) {
         if (tareas[i].estado == 1) {
             tareas[i].tiempoquesetardo = tareas[i].tiempodefinalizacion - tareas[i].tiempodecreacion
             if (tareas[i].tiempoquesetardo > mejortiempo) {
-                tareaMasRapida = tareas[i].Titulo;
+                tareaMasRapida = tareas[i].tarea;
                 mejortiempo = tareas[i].tiempoquesetardo
+                desp = tareas[i].descripcion
             }
         }
 
     }
     if (mejortiempo != null) {
-        alert("La tarea más rápida fue: " + tareaMasRapida +
-            " Se tardo:" + mejortiempo);
+        alert("La tarea más rápida fue: " + tareaMasRapida + " Descripción " + desp +
+        " Se tardo:" + mejortiempo);
     } else {
         alert("No hay tareas realizadas");
     }
-    console.log(tareas.tiempodecreacion)
-    //console.log(tareas.tiempo)
 }
