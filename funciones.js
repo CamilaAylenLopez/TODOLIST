@@ -75,6 +75,6 @@ function tareaMasRapida() {
         }
     }
     if (idMasRapida == -1) alert("ninguna tarea fue completada")
-    else alert("la tarea mas rapida fue: " + tareas[idMasRapida].tarea)
+    else alert("la tarea mas rapida fue: " + tareas[idMasRapida].tarea + "; El tiempo que tardo fue: " + tareaMasRapida + " segundos")
 
 }
