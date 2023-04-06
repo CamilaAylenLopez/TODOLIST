@@ -74,7 +74,7 @@ function tareaMasRapida() {
             }
         }
     }
-    if (idMasRapida == -1) console.log("ninguna tarea fue completada")
-    else console.log("la tarea mas rapida fue: " + tareas[idMasRapida].tarea)
+    if (idMasRapida == -1) alert("ninguna tarea fue completada")
+    else alert("la tarea mas rapida fue: " + tareas[idMasRapida].tarea)
 
 }
