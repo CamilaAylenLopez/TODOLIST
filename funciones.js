@@ -3,7 +3,7 @@ var item;
 const tareas = [];
 var idTareas = 0
 
-const AñadirItem = () => {
+const añadirItem = () => {
     var tareaInput = document.getElementById("titulo").value;
     var descripcionInput = document.getElementById("Descripcion").value;
     if (tareaInput && descripcionInput) {
